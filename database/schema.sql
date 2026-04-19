@@ -1,6 +1,4 @@
--- =========================
 -- CUSTOMERS
--- =========================
 CREATE TABLE Customers (
     CustomerID INT IDENTITY(1,1) PRIMARY KEY,
     FirstName VARCHAR(50) NOT NULL,
@@ -9,6 +7,13 @@ CREATE TABLE Customers (
     Phone VARCHAR(20),
     CreatedAt DATETIME DEFAULT GETDATE()
 );
+
+-- CATEGORIES
+CREATE TABLE Categories (
+    CategoryID INT IDENTITY(1,1) PRIMARY KEY,
+    CategoryName VARCHAR(100) NOT NULL
+);
+
 
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
