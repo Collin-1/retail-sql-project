@@ -14,10 +14,15 @@ CREATE TABLE Categories (
     CategoryName VARCHAR(100) NOT NULL
 );
 
-
+-- PRODUCTS
 CREATE TABLE Products (
-    ProductID INT PRIMARY KEY,
-    Name VARCHAR(100),
-    Price DECIMAL(10,2),
-    Stock INT
-);
+    ProductID INT IDENTITY(1,1) PRIMARY KEY,
+    ProductName VARCHAR(100) NOT NULL,
+    CategoryID INT NOT NULL,
+    Price DECIMAL(10,2) NOT NULL,
+    Stock INT NOT NULL DEFAULT 0,
+    CreatedAt DATETIME DEFAULT GETDATE(),
+
+    CONSTRAINT FK_Products_Categories
+        FOREIGN KEY (CategoryID)
+        REFERENCES Categories(CategoryID)
