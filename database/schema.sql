@@ -62,3 +62,34 @@ CREATE TABLE Orders (
         FOREIGN KEY (CustomerID)
         REFERENCES Customers(CustomerID)
 );
+
+-- ORDER DETAILS (Line Items)
+-- =========================
+CREATE TABLE OrderDetails (
+    OrderDetailID INT IDENTITY(1,1) PRIMARY KEY,
+    OrderID INT NOT NULL,
+    ProductID INT NOT NULL,
+    Quantity INT NOT NULL,
+    UnitPrice DECIMAL(10,2) NOT NULL,
+
+    CONSTRAINT FK_OD_Orders
+        FOREIGN KEY (OrderID)
+        REFERENCES Orders(OrderID),
+
+    CONSTRAINT FK_OD_Products
+        FOREIGN KEY (ProductID)
+        REFERENCES Products(ProductID)
+);
+
+-- PAYMENTS
+CREATE TABLE Payments (
+    PaymentID INT IDENTITY(1,1) PRIMARY KEY,
+    OrderID INT NOT NULL,
+    PaymentDate DATETIME DEFAULT GETDATE(),
+    Amount DECIMAL(10,2) NOT NULL,
+    PaymentMethod VARCHAR(50), -- e.g., Card, Cash
+
+    CONSTRAINT FK_Payments_Orders
+        FOREIGN KEY (OrderID)
+        REFERENCES Orders(OrderID)
+);
