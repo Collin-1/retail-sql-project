@@ -81,4 +81,15 @@ CREATE TABLE OrderDetails (
         REFERENCES Products(ProductID)
 );
 
+-- PAYMENTS
+CREATE TABLE Payments (
+    PaymentID INT IDENTITY(1,1) PRIMARY KEY,
+    OrderID INT NOT NULL,
+    PaymentDate DATETIME DEFAULT GETDATE(),
+    Amount DECIMAL(10,2) NOT NULL,
+    PaymentMethod VARCHAR(50), -- e.g., Card, Cash
 
+    CONSTRAINT FK_Payments_Orders
+        FOREIGN KEY (OrderID)
+        REFERENCES Orders(OrderID)
+);
