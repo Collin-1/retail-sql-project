@@ -35,3 +35,17 @@ CREATE TABLE Suppliers (
     Phone VARCHAR(20),
     Email VARCHAR(100)
 );
+
+-- PRODUCT SUPPLIERS (Many-to-Many)
+CREATE TABLE ProductSuppliers (
+    ProductID INT,
+    SupplierID INT,
+
+    PRIMARY KEY (ProductID, SupplierID),
+
+    CONSTRAINT FK_PS_Product
+        FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+
+    CONSTRAINT FK_PS_Supplier
+        FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID)
+);
