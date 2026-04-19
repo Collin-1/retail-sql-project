@@ -26,3 +26,12 @@ CREATE TABLE Products (
     CONSTRAINT FK_Products_Categories
         FOREIGN KEY (CategoryID)
         REFERENCES Categories(CategoryID)
+
+-- SUPPLIERS
+CREATE TABLE Suppliers (
+    SupplierID INT IDENTITY(1,1) PRIMARY KEY,
+    SupplierName VARCHAR(100) NOT NULL,
+    ContactName VARCHAR(100),
+    Phone VARCHAR(20),
+    Email VARCHAR(100)
+);
