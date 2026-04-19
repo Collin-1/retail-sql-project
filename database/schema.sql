@@ -49,3 +49,16 @@ CREATE TABLE ProductSuppliers (
     CONSTRAINT FK_PS_Supplier
         FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID)
 );
+
+
+-- ORDERS
+CREATE TABLE Orders (
+    OrderID INT IDENTITY(1,1) PRIMARY KEY,
+    CustomerID INT NOT NULL,
+    OrderDate DATETIME DEFAULT GETDATE(),
+    Status VARCHAR(50) DEFAULT 'Pending',
+
+    CONSTRAINT FK_Orders_Customers
+        FOREIGN KEY (CustomerID)
+        REFERENCES Customers(CustomerID)
+);
