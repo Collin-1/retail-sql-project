@@ -93,3 +93,16 @@ CREATE TABLE Payments (
         FOREIGN KEY (OrderID)
         REFERENCES Orders(OrderID)
 );
+
+-- INVENTORY LOG (Audit Trail)
+CREATE TABLE InventoryLog (
+    LogID INT IDENTITY(1,1) PRIMARY KEY,
+    ProductID INT NOT NULL,
+    ChangeAmount INT NOT NULL,
+    ChangeDate DATETIME DEFAULT GETDATE(),
+    Reason VARCHAR(100),
+
+    CONSTRAINT FK_Inventory_Product
+        FOREIGN KEY (ProductID)
+        REFERENCES Products(ProductID)
+);
