@@ -28,3 +28,13 @@ INSERT INTO Products (ProductName, CategoryID, Price, Stock) VALUES
 ('Blender', 3, 1200.00, 15),
 ('Cookware Set', 3, 2500.00, 8),
 ('Novel Book', 4, 150.00, 40);
+
+-- PRODUCT SUPPLIERS
+INSERT INTO ProductSuppliers (ProductID, SupplierID) VALUES
+(1, 1),
+(2, 1),
+(3, 2),
+(4, 2),
+(5, 3),
+(6, 3),
+(7, 3);
