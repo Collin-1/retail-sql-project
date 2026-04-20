@@ -18,3 +18,13 @@ INSERT INTO Suppliers (SupplierName, ContactName, Phone, Email) VALUES
 ('Tech Distributors Ltd', 'Alice Johnson', '0111234567', 'alice@techdist.com'),
 ('Fashion Wholesale Co', 'Bob Lee', '0112345678', 'bob@fashionwholesale.com'),
 ('Home Goods Supply', 'Carol White', '0113456789', 'carol@homegoods.com');
+
+-- PRODUCTS
+INSERT INTO Products (ProductName, CategoryID, Price, Stock) VALUES
+('Laptop', 1, 15000.00, 10),
+('Smartphone', 1, 8000.00, 20),
+('T-Shirt', 2, 200.00, 50),
+('Jeans', 2, 500.00, 30),
+('Blender', 3, 1200.00, 15),
+('Cookware Set', 3, 2500.00, 8),
+('Novel Book', 4, 150.00, 40);
