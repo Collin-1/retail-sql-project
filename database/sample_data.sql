@@ -70,3 +70,10 @@ INSERT INTO Payments (OrderID, PaymentDate, Amount, PaymentMethod) VALUES
 (4, '2026-04-05', 3700.00, 'Cash'),
 (5, '2026-04-06', 1300.00, 'Card');
 
+-- INVENTORY LOG
+INSERT INTO InventoryLog (ProductID, ChangeAmount, Reason) VALUES
+(1, -1, 'Order placed'),
+(3, -2, 'Order placed'),
+(2, -1, 'Order placed'),
+(4, -1, 'Order placed'),
+(7, -3, 'Order placed');
