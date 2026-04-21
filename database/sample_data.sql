@@ -46,3 +46,19 @@ INSERT INTO Orders (CustomerID, OrderDate, Status) VALUES
 (3, '2026-04-03', 'Pending'),
 (1, '2026-04-05', 'Completed'),
 (4, '2026-04-06', 'Completed');
+
+-- ORDER DETAILS
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, UnitPrice) VALUES
+(1, 1, 1, 15000.00),
+(1, 3, 2, 200.00),
+
+(2, 2, 1, 8000.00),
+(2, 4, 1, 500.00),
+
+(3, 7, 3, 150.00),
+
+(4, 5, 1, 1200.00),
+(4, 6, 1, 2500.00),
+
+(5, 3, 5, 200.00),
+(5, 7, 2, 150.00);
