@@ -38,3 +38,11 @@ INSERT INTO ProductSuppliers (ProductID, SupplierID) VALUES
 (5, 3),
 (6, 3),
 (7, 3);
+
+-- ORDERS
+INSERT INTO Orders (CustomerID, OrderDate, Status) VALUES
+(1, '2026-04-01', 'Completed'),
+(2, '2026-04-02', 'Completed'),
+(3, '2026-04-03', 'Pending'),
+(1, '2026-04-05', 'Completed'),
+(4, '2026-04-06', 'Completed');
