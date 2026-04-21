@@ -62,3 +62,11 @@ INSERT INTO OrderDetails (OrderID, ProductID, Quantity, UnitPrice) VALUES
 
 (5, 3, 5, 200.00),
 (5, 7, 2, 150.00);
+
+-- PAYMENTS
+INSERT INTO Payments (OrderID, PaymentDate, Amount, PaymentMethod) VALUES
+(1, '2026-04-01', 15400.00, 'Card'),
+(2, '2026-04-02', 8500.00, 'Card'),
+(4, '2026-04-05', 3700.00, 'Cash'),
+(5, '2026-04-06', 1300.00, 'Card');
+
