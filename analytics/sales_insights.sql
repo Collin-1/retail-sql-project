@@ -16,3 +16,16 @@ SELECT TOP 5 *
 FROM CustomerSpending
 ORDER BY TotalSpent DESC;
 
+-- 2. Monthly Revenue Trend
+-- time-based analysis
+
+SELECT 
+    FORMAT(OrderDate, 'yyyy-MM') AS Month,
+    SUM(od.Quantity * od.UnitPrice) AS Revenue
+FROM Orders o
+JOIN OrderDetails od ON o.OrderID = od.OrderID
+WHERE o.Status = 'Completed'
+GROUP BY FORMAT(OrderDate, 'yyyy-MM')
+ORDER BY Month;
+
+
