@@ -29,3 +29,13 @@ GROUP BY FORMAT(OrderDate, 'yyyy-MM')
 ORDER BY Month;
 
 
+-- 3. Best-Selling Products (Ranked)
+
+SELECT 
+    p.ProductName,
+    SUM(od.Quantity) AS TotalSold,
+    RANK() OVER (ORDER BY SUM(od.Quantity) DESC) AS SalesRank
+FROM Products p
+JOIN OrderDetails od ON p.ProductID = od.ProductID
+GROUP BY p.ProductName;
+
