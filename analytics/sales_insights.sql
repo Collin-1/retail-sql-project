@@ -53,3 +53,19 @@ JOIN OrderDetails od ON o.OrderID = od.OrderID
 WHERE o.Status = 'Completed'
 GROUP BY c.CustomerID, c.FirstName, c.LastName
 ORDER BY LifetimeValue DESC;
+
+
+## 5. Average Order Value (AOV)
+
+SELECT 
+    AVG(OrderTotal) AS AvgOrderValue
+FROM (
+    SELECT 
+        o.OrderID,
+        SUM(od.Quantity * od.UnitPrice) AS OrderTotal
+    FROM Orders o
+    JOIN OrderDetails od ON o.OrderID = od.OrderID
+    WHERE o.Status = 'Completed'
+    GROUP BY o.OrderID
+) AS OrderTotals;
+
