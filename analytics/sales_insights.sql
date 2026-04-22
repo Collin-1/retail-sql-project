@@ -39,3 +39,17 @@ FROM Products p
 JOIN OrderDetails od ON p.ProductID = od.ProductID
 GROUP BY p.ProductName;
 
+
+-- 4. Customer Lifetime Value (CLV)
+
+SELECT 
+    c.CustomerID,
+    c.FirstName + ' ' + c.LastName AS CustomerName,
+    COUNT(DISTINCT o.OrderID) AS TotalOrders,
+    SUM(od.Quantity * od.UnitPrice) AS LifetimeValue
+FROM Customers c
+JOIN Orders o ON c.CustomerID = o.CustomerID
+JOIN OrderDetails od ON o.OrderID = od.OrderID
+WHERE o.Status = 'Completed'
+GROUP BY c.CustomerID, c.FirstName, c.LastName
+ORDER BY LifetimeValue DESC;
