@@ -111,3 +111,14 @@ HAVING COUNT(o.OrderID) > 1
 ORDER BY OrderCount DESC;
 
 
+-- 9. Running Total of Sales Over Time
+SELECT
+    o.OrderDate,
+    SUM(od.Quantity * od.UnitPrice) AS DailyRevenue,
+    SUM(SUM(od.Quantity * od.UnitPrice)) OVER (ORDER BY o.OrderDate) AS RunningTotal
+FROM Orders o
+JOIN OrderDetails od ON o.OrderID = od.OrderID
+WHERE o.Status = 'Completed'
+GROUP BY o.OrderDate
+ORDER BY o.OrderDate;
+
