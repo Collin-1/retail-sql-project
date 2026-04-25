@@ -69,3 +69,11 @@ FROM (
     GROUP BY o.OrderID
 ) AS OrderTotals;
 
+-- 6. Low Stock Alert (Inventory Insight)
+
+SELECT
+    ProductName,
+    Stock
+FROM Products
+WHERE Stock < 10
+ORDER BY Stock ASC;
