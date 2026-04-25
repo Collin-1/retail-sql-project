@@ -122,3 +122,19 @@ WHERE o.Status = 'Completed'
 GROUP BY o.OrderDate
 ORDER BY o.OrderDate;
 
+-- 10. Top Product Per Category
+
+WITH ProductSales AS (
+    SELECT
+        c.CategoryName,
+        p.ProductName,
+        SUM(od.Quantity) AS TotalSold,
+        RANK() OVER (PARTITION BY c.CategoryName ORDER BY SUM(od.Quantity) DESC) AS RankInCategory
+    FROM Products p
+    JOIN Categories c ON p.CategoryID = c.CategoryID
+    JOIN OrderDetails od ON p.ProductID = od.ProductID
+    GROUP BY c.CategoryName, p.ProductName
+)
+SELECT *
+FROM ProductSales
+WHERE RankInCategory = 1;
