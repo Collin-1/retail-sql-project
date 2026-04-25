@@ -100,3 +100,14 @@ FROM ProductRevenue pr, TotalRevenue tr
 ORDER BY RevenuePercentage DESC;
 
 
+-- 8. Most Loyal Customers (Repeat Buyers)
+SELECT
+    c.FirstName + ' ' + c.LastName AS CustomerName,
+    COUNT(o.OrderID) AS OrderCount
+FROM Customers c
+JOIN Orders o ON c.CustomerID = o.CustomerID
+GROUP BY c.FirstName, c.LastName
+HAVING COUNT(o.OrderID) > 1
+ORDER BY OrderCount DESC;
+
+
