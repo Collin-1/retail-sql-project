@@ -55,7 +55,7 @@ GROUP BY c.CustomerID, c.FirstName, c.LastName
 ORDER BY LifetimeValue DESC;
 
 
-## 5. Average Order Value (AOV)
+-- 5. Average Order Value (AOV)
 
 SELECT 
     AVG(OrderTotal) AS AvgOrderValue
@@ -69,3 +69,11 @@ FROM (
     GROUP BY o.OrderID
 ) AS OrderTotals;
 
+-- 6. Low Stock Alert (Inventory Insight)
+
+SELECT
+    ProductName,
+    Stock
+FROM Products
+WHERE Stock < 10
+ORDER BY Stock ASC;
