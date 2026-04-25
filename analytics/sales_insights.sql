@@ -77,3 +77,26 @@ SELECT
 FROM Products
 WHERE Stock < 10
 ORDER BY Stock ASC;
+
+-- 7. Revenue Contribution by Product (%)
+-- multi-CTE + percentage analytics
+
+WITH ProductRevenue AS (
+    SELECT
+        p.ProductName,
+        SUM(od.Quantity * od.UnitPrice) AS Revenue
+    FROM Products p
+    JOIN OrderDetails od ON p.ProductID = od.ProductID
+    GROUP BY p.ProductName
+),
+TotalRevenue AS (
+    SELECT SUM(Revenue) AS Total FROM ProductRevenue
+)
+SELECT
+    pr.ProductName,
+    pr.Revenue,
+    (pr.Revenue * 100.0 / tr.Total) AS RevenuePercentage
+FROM ProductRevenue pr, TotalRevenue tr
+ORDER BY RevenuePercentage DESC;
+
+
