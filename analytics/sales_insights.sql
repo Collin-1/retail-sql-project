@@ -55,7 +55,7 @@ GROUP BY c.CustomerID, c.FirstName, c.LastName
 ORDER BY LifetimeValue DESC;
 
 
-## 5. Average Order Value (AOV)
+-- 5. Average Order Value (AOV)
 
 SELECT 
     AVG(OrderTotal) AS AvgOrderValue
